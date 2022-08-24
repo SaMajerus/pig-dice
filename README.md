@@ -10,13 +10,11 @@ Expected Result:
 
 Describe: Player(); 
 
-Test 1: It should store our players into 2 variables 
-Code: 
-  function Player(player1, variable)
-  this.name = player1
-  this.currentTotal = [];
-  this.totalPoints = variable
-Expected Result:
+Test 1:
+Code:
+Expected Result
+
+
 
 Describe: diceRoll();
 
@@ -45,3 +43,7 @@ Test 3: It will push number into total points array if not equal to 1
   Expected Result:
   Erase the total of built up numbers when rolls a 1
 
+  Describe: sum();
+  Test 1: It should add all the numbers in currentPoints array to totalPoints array
+  Code:
+    sum(currentTotal)

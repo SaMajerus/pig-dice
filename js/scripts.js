@@ -1,4 +1,5 @@
 let currentTotal = [];
+let totalPoints = 0;
 
 function diceRoll() {
   let number = Math.floor((Math.random() * 6) + 1); 
@@ -13,12 +14,11 @@ function diceRoll() {
   console.log(currentTotal);
 }
 
-// function sum(currentTotal) {
-// let totalPoints = 0;
-// for(let i=0, i < currentTotal.length; i++) {
-//  totalPoints = totalPoints + currentTotal[i]
-//  }
-//  return totalPoints;
-// }
-//
-//
+function sum(currentTotal) {
+  let totalPoints = totalPoints;
+  for (let i = 0; i < currentTotal.length; i++) {
+    totalPoints += currentTotal[i]
+  }
+  return totalPoints;
+}
+
