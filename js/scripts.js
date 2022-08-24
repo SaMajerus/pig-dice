@@ -46,7 +46,6 @@ Player.prototype.winner = function() {
 }
 
 
-
 /*   UI Logic   */
 
 function handleGameStart(event) {
