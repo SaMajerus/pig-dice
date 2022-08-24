@@ -7,7 +7,7 @@ Player.prototype.diceRoll = function() {
   // console.log("Applying 'Math.floor' on 'numInner', we get:  " + Math.floor(numInner)); 
   if (number !== 1) { 
     this.currentTotal.push(number);
-  } else if (number === 1) {
+  } else {  //(If 'number === 1')
     return this.currentTotal = [0];
   }
   console.log(this.currentTotal);
@@ -19,15 +19,17 @@ Player.prototype.currentSum = function() {
     this.currentPoints += this.currentTotal[i];
   } if (this.totalPts >= 100) {
     this.winner();
-  }
-  return this.currentPoints;
+  } else {
+    return this.currentPoints;
+  } 
 }
 
 Player.prototype.sum = function() {  //(Local-var 'totalPoints' modified to 'totalPts' for revision/clarification of Test 1.)
- this.totalPts = 0;
+ this.totalPts = this.totalPts;
   for (let i = 0; i < this.currentTotal.length; i++) {
     this.totalPts += this.currentTotal[i];
   }
+  this.currentTotal = [];
   return this.totalPts;
 }
 
@@ -41,8 +43,9 @@ Player.prototype.winner = function() {
   document.querySelector("#youWin").removeAttribute("class");
   document.querySelector("#gameboard").setAttribute("class", "hidden");
   document.querySelector("#winner").innerText = this.name;
-
 }
+
+
 
 /*   UI Logic   */
 
@@ -55,26 +58,30 @@ function handleGameStart(event) {
   document.querySelector("div#game").removeAttribute("class");
   document.querySelector("span#player1").innerText = player1.name;
   document.querySelector("span#player2").innerText = player2.name;
+  document.querySelector("div#p1Buttons").removeAttribute("class");
   document.getElementById("roll1").addEventListener("click",function() {
     player1.diceRoll();
-    document.querySelector("span#currpts1").innerHTML = player1.currentTotal;
+    document.querySelector("span#currpts1").innerHTML = player1.currentSum();
   });
   document.getElementById("roll2").addEventListener("click",function() {
     player2.diceRoll();
-    document.querySelector("span#currpts2").innerHTML = player2.currentTotal;
+    document.querySelector("span#currpts2").innerHTML = player2.currentSum();
   });
   document.querySelector("#hold1").addEventListener("click", function(){
     player1.sum();
     document.querySelector("span#totalpts1").innerHTML = player1.totalPts;
+    document.querySelector("div#p1Buttons").setAttribute("class", "hidden");
+    document.querySelector("div#p2Buttons").removeAttribute("class");
   });
   document.querySelector("#hold2").addEventListener("click", function(){
     player2.sum();
     document.querySelector("span#totalpts2").innerHTML = player2.totalPts;
+    document.querySelector("div#p2Buttons").setAttribute("class", "hidden");
+    document.querySelector("div#p1Buttons").removeAttribute("class");
   });
-
 }
 
 window.addEventListener("load", function() {
-  document.querySelector("form#nameInput").addEventListener("submit", handleGameStart)
-  // document.querySelector("form#gameboard").addEventListener("submit", handleGameRoll)
+  document.querySelector("form#nameInput").addEventListener("submit", handleGameStart);
+  // document.querySelector("form#gameboard").addEventListener("submit", handleGameRoll);
 }); 
