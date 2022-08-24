@@ -14,11 +14,17 @@ function diceRoll() {
   console.log(currentTotal);
 }
 
-function sum(currentTotal) {
-  let totalPoints = totalPoints;
+function sum(currentTotal) {  //(Local-var 'totalPoints' modified to 'totalPts' for revision/clarification of Test 1.)
+  let totalPts = totalPoints;
   for (let i = 0; i < currentTotal.length; i++) {
-    totalPoints += currentTotal[i]
+    totalPts += currentTotal[i];
   }
-  return totalPoints;
+  return totalPts;
 }
+
+function Player(name, totalPoints) {
+  this.name = name;
+  this.currentTotal = [];
+  this.totalPoints = 0; //Initializes this field to start at 0. 
+} 
 

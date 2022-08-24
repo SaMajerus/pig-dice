@@ -10,9 +10,15 @@ Expected Result:
 
 Describe: Player(); 
 
-Test 1:
+Test 1: It should create our players
 Code:
-Expected Result
+  function Player(name, currentTotal, totalPoints) {
+  this.name = name
+  this.currentTotal = currentTotal
+  this.totalPoints = totalPoints
+}
+Expected Result:
+Create a new Player object with all properties declared, initialized and ready to go. 
 
 
 
@@ -44,6 +50,9 @@ Test 3: It will push number into total points array if not equal to 1
   Erase the total of built up numbers when rolls a 1
 
   Describe: sum();
-  Test 1: It should add all the numbers in currentPoints array to totalPoints array
-  Code:
-    sum(currentTotal)
+Test 1: It should add all the numbers in currentPoints array to totalPoints array
+  Code: 
+    let totalPoints = 10; 
+    let currentTotal = [4, 2, 2, 6];
+    console.log(sum(currentTotal)); 
+  Expected Result: 24 
